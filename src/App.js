@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Auth from "./pages/Auth.jsx";
+import Dashboard from "./pages/Dashboard";
+
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
+
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+import MainStore from "./redux/store";
+
+class App extends React.Component {
+  render() {
+    return (
+      <Provider store={MainStore.store}>
+        <PersistGate persistor={MainStore.persistor}>
+          <Router>
+            <Switch>
+              <Route path="/auth" component={Auth} />
+              <Route path="/dashboard" component={Dashboard} />
+              <Route>{<Redirect to="/dashboard/catalog" />}</Route>
+            </Switch>
+          </Router>
+        </PersistGate>
+      </Provider>
+    );
+  }
 }
 
 export default App;
