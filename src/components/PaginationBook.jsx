@@ -60,6 +60,7 @@ export default connect(
                   ? "btn-secondary"
                   : "btn-outline-secondary"
               }`}
+              disabled={params.page === i + 1}
               key={i.toString()}
             >
               {i + 1}

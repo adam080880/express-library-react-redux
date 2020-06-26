@@ -42,3 +42,18 @@ export const logout = () => ({
   type: "LOGOUT",
   payload: true,
 });
+
+export const completeRegistration = (data, token) => ({
+  type: "COMPLETE_REGISTRATION",
+  payload: new Promise((resolve, reject) => {
+    AuthModel.completeBiodata(data, token)
+      .then((res) => {
+        resolve({ msg: "Success", data: {} });
+      })
+      .catch((rej) => {
+        reject({
+          msg: rej.response ? rej.response.data.msg : "Error server",
+        });
+      });
+  }),
+});

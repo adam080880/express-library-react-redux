@@ -1,6 +1,7 @@
 const initState = {
   msg: "",
   items: [],
+  real: [],
   status: null,
 };
 
@@ -12,11 +13,19 @@ export default (state = initState, action) => {
     case "GET_AUTHOR_FULFILLED": {
       return {
         ...state,
-        ...{ msg: "Success", items: action.payload.data, status: true },
+        ...{
+          msg: "Success",
+          items: action.payload.data,
+          status: true,
+          real: action.payload.data,
+        },
       };
     }
     case "GET_AUTHOR_REJECTED": {
       return { ...state, ...{ msg: "Failed", items: [], status: false } };
+    }
+    case "SEARCH": {
+      return { ...state, ...{ items: action.payload } };
     }
     default: {
       return state;

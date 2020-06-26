@@ -13,6 +13,9 @@ import Sidebar from "../components/Sidebar";
 import Navbar from "../components/Navbar";
 
 import AddBookModal from "./dashboardModals/AddBookModal";
+import CompleteBiodata from "./authPages/CompleteBiodata";
+import Transaction from "./dashboardPages/Transaction";
+import Config from "./dashboardPages/Config";
 
 class Dashboard extends React.Component {
   componentDidMount() {}
@@ -30,6 +33,14 @@ class Dashboard extends React.Component {
                 location={this.props.location}
               />
             )}
+          {this.props.toggleModal &&
+            this.props.controllerPage.modalInDashboard ===
+              "complete_biodata" && (
+              <CompleteBiodata
+                history={this.props.history}
+                location={this.props.location}
+              />
+            )}
         </Modal>
         <div className="row dashboard mx-0 h-100">
           <Sidebar />
@@ -38,13 +49,9 @@ class Dashboard extends React.Component {
               <Navbar />
             </div>
 
-            {/* <Route
-              exact
-              path="/dashboard/history"
-              component={Transaction}
-            /> */}
+            <Route exact path="/dashboard/history" component={Transaction} />
             <Route exact path="/dashboard/catalog" component={Catalog} />
-            {/* <Route exact path="/dashboard/configs" component={Config} /> */}
+            <Route exact path="/dashboard/configs" component={Config} />
             {/* <Route exact path="/dashboard/users" component={User} /> */}
             <Route
               exact

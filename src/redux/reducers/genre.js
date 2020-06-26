@@ -1,6 +1,7 @@
 const initState = {
   msg: "",
   items: [],
+  real: [],
   status: null,
 };
 
@@ -12,11 +13,22 @@ export default (state = initState, action) => {
     case "GET_GENRE_FULFILLED": {
       return {
         ...state,
-        ...{ msg: "Success", items: action.payload.data, status: true },
+        ...{
+          msg: "Success",
+          items: action.payload.data,
+          real: action.payload.data,
+          status: true,
+        },
       };
     }
     case "GET_GENRE_REJECTED": {
-      return { ...state, ...{ msg: "Failed", items: [], status: false } };
+      return {
+        ...state,
+        ...{ msg: "Failed", items: [], real: [], status: false },
+      };
+    }
+    case "SEARCH_GENRE": {
+      return { ...state, ...{ items: action.payload } };
     }
     default: {
       return state;

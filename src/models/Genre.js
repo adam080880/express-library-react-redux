@@ -12,14 +12,14 @@ export default {
     });
   },
   patch: (data, id, token) => {
-    return Axios.post(apiUrl(`/genre/${id}`), qs.stringify(data), {
+    return Axios.patch(apiUrl(`/genre/${id}`), qs.stringify(data), {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
   },
   delete: (id, token) => {
-    return Axios.post(apiUrl(`/genre/${id}`), {
+    return Axios.delete(apiUrl(`/genre/${id}`), {
       headers: {
         Authorization: `Bearer ${token}`,
       },

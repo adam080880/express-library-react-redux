@@ -5,5 +5,13 @@ import books from "./books";
 import author from "./author";
 import genre from "./genre";
 import controllerPage from "./controllerPage";
+import transaction from "./transaction";
 
-export default combineReducers({ auth, books, author, genre, controllerPage });
+export default combineReducers({
+  auth,
+  books,
+  author,
+  genre,
+  controllerPage,
+  transaction,
+});

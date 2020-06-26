@@ -11,6 +11,7 @@ import { findBook, deleteBook, setStatus } from "../../redux/actions/books";
 import { toggleModal, openModal } from "../../redux/actions/controllerPage";
 
 import EditBookModal from "./DetailModals/EditBook";
+import Booking from "./DetailModals/Booking";
 
 class Detail extends React.Component {
   componentDidMount() {
@@ -85,6 +86,9 @@ class Detail extends React.Component {
         >
           {this.props.controllerPage.modalInDashboard === "edit_book" && (
             <EditBookModal match={this.props.match} />
+          )}
+          {this.props.controllerPage.modalInDashboard === "booking" && (
+            <Booking match={this.props.match} />
           )}
         </Modal>
         <Breadcrumb>
@@ -171,7 +175,7 @@ class Detail extends React.Component {
                             disabled={
                               !(this.props.books.data.status === "available")
                             }
-                            onClick={(e) => this.toggleModal(1)}
+                            onClick={(e) => this.props.openModal("booking")}
                             className="rounded-pill mx-auto mx-lg-0 mt-3 mt-lg-0 cta border-0 px-4 py-2 text-white"
                           >
                             Booking
@@ -208,34 +212,6 @@ class Detail extends React.Component {
                       </p>
                     </li>
                   </ul>
-                  <span className="font-weight-bold mb-3"> History:</span>
-                  <br />
-                  {/* <div className="table-responsive">
-                    <table className="table mt-3">
-                      <thead className="thead">
-                        <tr>
-                          <th>Member</th>
-                          <th>Last Updated</th>
-                        </tr>
-                      </thead>
-                      <tbody className="tbody">
-                        {this.state.histories.length > 0 &&
-                          this.state.histories.map((val, index) => (
-                            <tr key={index}>
-                              <td>{val.member}</td>
-                              <td>{val.last_updated}</td>
-                            </tr>
-                          ))}
-                        {this.state.histories.length === 0 && (
-                          <tr>
-                            <td colSpan={2} className="text-center">
-                              Histories is not found
-                            </td>
-                          </tr>
-                        )}
-                      </tbody>
-                    </table>
-                  </div> */}
                 </div>
               </div>
             </div>

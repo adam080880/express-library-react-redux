@@ -5,6 +5,7 @@ const initState = {
   session: {},
   msg: "",
   status: null,
+  completeRegis: null,
 };
 
 const auth = (state = initState, action) => {
@@ -58,8 +59,33 @@ const auth = (state = initState, action) => {
       const { msg } = action.payload;
       return { ...state, ...{ isDone: true, status: false, msg } };
     }
+    case "COMPLETE_REGISTRATION_PENDING": {
+      return {
+        ...state,
+        ...{ completeRegis: null, isDone: false },
+      };
+    }
+    case "COMPLETE_REGISTRATION_FULFILLED": {
+      return {
+        ...state,
+        ...{ completeRegis: true, isDone: true },
+      };
+    }
+    case "COMPLETE_REGISTRATION_REJECTED": {
+      return {
+        ...state,
+        ...{
+          completeRegis: false,
+          msg: action.payload.msg,
+          isDone: true,
+        },
+      };
+    }
     case "LOGOUT": {
-      return { ...state, ...{ session: {} } };
+      return {
+        ...state,
+        ...{ session: {}, status: null, completeRegis: null, isDone: true },
+      };
     }
     default: {
       return state;

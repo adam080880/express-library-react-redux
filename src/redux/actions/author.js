@@ -51,3 +51,13 @@ export const deleteAuthor = (id, token = null) => ({
       });
   }),
 });
+
+export const search = (key = "", items = []) => {
+  const payload = items.filter((val) =>
+    val.name.toLowerCase().includes(key.toLowerCase())
+  );
+  return {
+    type: "SEARCH",
+    payload,
+  };
+};

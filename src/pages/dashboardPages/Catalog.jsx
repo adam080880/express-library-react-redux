@@ -8,7 +8,7 @@ import { Breadcrumb, BreadcrumbItem } from "reactstrap";
 import BookCard from "../../components/BookCard";
 
 import { connect } from "react-redux";
-import Pagination from "../../components/Pagination";
+import Pagination from "../../components/PaginationBook";
 
 import Swal from "sweetalert2";
 
