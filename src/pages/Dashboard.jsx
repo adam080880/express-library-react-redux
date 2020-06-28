@@ -16,6 +16,7 @@ import AddBookModal from "./dashboardModals/AddBookModal";
 import CompleteBiodata from "./authPages/CompleteBiodata";
 import Transaction from "./dashboardPages/Transaction";
 import Config from "./dashboardPages/Config";
+import User from "./dashboardPages/User";
 
 class Dashboard extends React.Component {
   componentDidMount() {}
@@ -52,7 +53,7 @@ class Dashboard extends React.Component {
             <Route exact path="/dashboard/history" component={Transaction} />
             <Route exact path="/dashboard/catalog" component={Catalog} />
             <Route exact path="/dashboard/configs" component={Config} />
-            {/* <Route exact path="/dashboard/users" component={User} /> */}
+            <Route exact path="/dashboard/users" component={User} />
             <Route
               exact
               path="/dashboard/catalog/detail/:id"
