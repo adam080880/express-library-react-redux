@@ -19,6 +19,11 @@ export const booking = (data, token) => ({
   }),
 });
 
+export const onBorrowPage = (payload) => ({
+  type: "ON_BORROW_PAGE",
+  payload: payload,
+});
+
 export const getMember = (param, token) => ({
   type: "GET_MEMBER",
   payload: new Promise((resolve, reject) => {

@@ -1,7 +1,11 @@
 import React from "react";
 import { ModalBody } from "reactstrap";
 import { toggleModal } from "../../../redux/actions/controllerPage";
-import { booking, setStatus } from "../../../redux/actions/transaction";
+import {
+  booking,
+  setStatus,
+  onBorrowPage,
+} from "../../../redux/actions/transaction";
 import { findBook } from "../../../redux/actions/books";
 import { connect } from "react-redux";
 import Swal from "sweetalert2";
@@ -13,6 +17,7 @@ class Booking extends React.Component {
       book_id: props.match.params.id,
       promise_returned_at: "",
     };
+    this.props.onBorrowPage(null);
   }
 
   booking = (e) => {
@@ -95,6 +100,7 @@ const mapDispatchToProps = {
   booking,
   findBook,
   setStatus,
+  onBorrowPage,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Booking);

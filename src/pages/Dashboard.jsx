@@ -11,6 +11,7 @@ import Detail from "./dashboardPages/Detail";
 
 import Sidebar from "../components/Sidebar";
 import Navbar from "../components/Navbar";
+import BottomBar from "../components/BottomBar";
 
 import AddBookModal from "./dashboardModals/AddBookModal";
 import CompleteBiodata from "./authPages/CompleteBiodata";
@@ -44,10 +45,14 @@ class Dashboard extends React.Component {
             )}
         </Modal>
         <div className="row dashboard mx-0 h-100">
+          <BottomBar />
           <Sidebar />
-          <div className="col px-0">
+          <div className="col px-0 mb-4 mb-lg-0">
             <div className="sticky-top">
-              <Navbar />
+              <Navbar
+                location={this.props.location}
+                history={this.props.history}
+              />
             </div>
 
             <Route exact path="/dashboard/history" component={Transaction} />

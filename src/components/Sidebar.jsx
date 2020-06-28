@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-import { openModal, toggleModal } from "../redux/actions/controllerPage";
+import { openModal } from "../redux/actions/controllerPage";
 import { getAuthor } from "../redux/actions/author";
 import { getGenre } from "../redux/actions/genre";
 
@@ -115,7 +115,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   openModal,
-  toggleModal,
   getGenre,
   getAuthor,
 };

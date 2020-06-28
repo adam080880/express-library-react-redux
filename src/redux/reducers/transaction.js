@@ -4,10 +4,14 @@ const initState = {
   status: null,
   msg: "",
   pageInfo: {},
+  isOnBorrowPage: false,
 };
 
 export default (state = initState, action) => {
   switch (action.type) {
+    case "ON_BORROW_PAGE": {
+      return { ...state, ...{ status: action.payload, isLoading: false } };
+    }
     case "SET_STATUS": {
       return { ...state, ...{ status: action.payload } };
     }
