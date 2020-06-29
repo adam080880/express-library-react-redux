@@ -218,7 +218,6 @@ class Author extends React.Component {
                 <thead>
                   <tr>
                     <th>Name</th>
-                    <th>Description</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -226,7 +225,6 @@ class Author extends React.Component {
                   {this.props.author.items.map((val, index) => (
                     <tr key={index}>
                       <td>{val.name}</td>
-                      <td>{val.description}</td>
                       <td>
                         <button
                           className="btn btn-danger btn-sm"
